@@ -1,4 +1,3 @@
-"use client"
 import Link from 'next/link'
 import React from 'react'
 import Image from "next/image"
@@ -20,28 +19,33 @@ const Navbar = async () => {
                 </Link>
 
                 {/* only want to render if user is logged in */}
-                <div className="flex items-center gap-5">
+                <div className="flex items-center gap-5 text-black">
                     {session && session?.user ? (
                         <>
-                        <Link href="/startup/create">
-                            <span>
-                            Create
-                            </span>
-                        </Link>
+                            <Link href="/startup/create">
+                                <span>
+                                Create
+                                </span>
+                            </Link>
 
-                        <button onClick={signOut}>
-                            <span>logout</span>
+                            <button onClick={signOut}>
+                                <span>logout</span>
 
-                        </button>
+                            </button>
 
-                        <Link href={`/user/${session?.id}`}>
-                            <span>{session?.user?.name}</span>
-                        </Link>
+                            <Link href={`/user/${session?.id}`}>
+                                <span>{session?.user?.name}</span>
+                            </Link>
                         </>
                     ) : (
-                        <button onClick={signIn(provider: 'github')} >
-                            <span>Login</span>
-                        </button>
+                        <form action={async() => { 
+                            "use server";
+                            await signIn('github');
+                        }} >
+                            <button type="submit">
+                                Login
+                            </button>
+                        </form>
                     )}
 
                 </div>
