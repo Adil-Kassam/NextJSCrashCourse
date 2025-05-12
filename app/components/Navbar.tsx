@@ -1,12 +1,17 @@
 import Link from 'next/link'
 import React from 'react'
 import Image from "next/image"
-import {auth} from "@/auth"
-import { signOut, signIn } from 'next-auth/react'
-import { Signika } from 'next/font/google'
+import {auth, signIn, signOut} from "@/auth"
+
+
+
 
 const Navbar = async () => {
     const session = await auth();
+
+ 
+
+
 
 
 
@@ -28,12 +33,16 @@ const Navbar = async () => {
                                 </span>
                             </Link>
 
-                            <button onClick={signOut}>
-                                <span>logout</span>
-
+                        <form action={async() => { 
+                            "use server";
+                            await signOut({redirectTo: "/"});
+                        }} >
+                            <button type="submit">
+                                Logout
                             </button>
+                        </form>
 
-                            <Link href={`/user/${session?.id}`}>
+                            <Link href={`/user/${session?.user?.id}`}>
                                 <span>{session?.user?.name}</span>
                             </Link>
                         </>
