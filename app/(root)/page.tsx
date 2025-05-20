@@ -1,5 +1,8 @@
 export default function Home() {
   return (
-    <h1 className="text-3xl">Home</h1>
+    <>
+      <section className="pink_container"></section>
+      <h1 className="heading">Home</h1>
+    </>
   );
 }
