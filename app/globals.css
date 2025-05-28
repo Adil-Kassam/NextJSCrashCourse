@@ -31,21 +31,7 @@
     @apply font-semibold text-[26px] text-black;
   }
 
-  .text-24-black {
-    @apply text-[24px] font-black text-black;
-  }
 
-  .text-20-medium {
-    @apply font-medium text-[20px] text-black;
-  }
-
-  .text-16-medium {
-    @apply font-medium text-[16px] text-black;
-  }
-
-  .text-14-normal {
-    @apply font-normal text-sm text-white-100/80;
-  }
 
   .pink_container {
     @apply w-full bg-primary min-h-[530px] pattern flex justify-center items-center flex-col py-10 px-6;
